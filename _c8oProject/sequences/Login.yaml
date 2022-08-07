@@ -4,13 +4,43 @@ accessibility: Hidden
     'var EWSApi = JavaImporter(
     	Packages.microsoft.exchange.webservices.data.core.ExchangeService,
     	Packages.microsoft.exchange.webservices.data.credential.WebCredentials,
-    	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion,
+    	Packages.microsoft.exchange.webservices.data.core.service.item.EmailMessage,
+    	Packages.microsoft.exchange.webservices.data.property.complex.MessageBody,
+    	
+    	Packages.java.net.URI
     );
+    
+    RedirectionUrlCallback = {
+    	autodiscoverRedirectionUrlValidationCallback: function(redirectionUrl) {
+    		log.warn(redirectionUrl);
+    		return true;
+    	}
+    }
+    
+    TraceListener = {
+    	trace: function(topic, data) {
+    		log.warn(topic + ":" + data)
+    	}
+    }
+    
     
     with (EWSApi) {
     	service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
+    	service.setTraceEnabled(true);
+    	service.setTraceListener(TraceListener);
     	credentials = new WebCredentials(user, password);
     	service.setCredentials(credentials);
+    	
+    	// service.autodiscoverUrl(user, RedirectionUrlCallback);
+    	url = new URI("https://outlook.office365.com/EWS/Exchange.asmx")
+    	service.setUrl(url);
+    	
+    	msg= new EmailMessage(service);
+    	msg.setSubject("Hello world!");
+    	msg.setBody(MessageBody.getMessageBodyFromText("Sent using the EWS Java API."));
+    	msg.getToRecipients().add("olivierp@convertigo.onmicrosoft.com");
+    	msg.send();
     }
     '
 ↓user [variables.RequestableVariable-1659854045975]: 
@@ -19,6 +49,15 @@ accessibility: Hidden
   ↓user [variables.TestCaseVariable-1659854067771]: 
     value: admin@qycf.onmicrosoft.com
   ↓password [variables.TestCaseVariable-1659854067773]: 
+    value: 
+      - ↑ciphered: true
+      - ↑traceable: false
+      - →→: xf5254abfffc0d4178afb9f473a13d698
+    visibility: '-1'
+↓OK1 [core.TestCase]: 
+  ↓user [variables.TestCaseVariable-1659858126737]: 
+    value: olivierp@convertigo.onmicrosoft.com
+  ↓password [variables.TestCaseVariable-1659858126740]: 
     value: 
       - ↑ciphered: true
       - ↑traceable: false
