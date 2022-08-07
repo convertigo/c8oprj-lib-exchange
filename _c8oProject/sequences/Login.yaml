@@ -1,0 +1,26 @@
+accessibility: Hidden
+↓EWSLogin [steps.SimpleStep-1659854153585]: 
+  expression: |
+    'var EWSApi = JavaImporter(
+    	Packages.microsoft.exchange.webservices.data.core.ExchangeService,
+    	Packages.microsoft.exchange.webservices.data.credential.WebCredentials,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion
+    );
+    
+    with (EWSApi) {
+    	service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
+    	credentials = new WebCredentials(user, password);
+    	service.setCredentials(credentials);
+    }
+    '
+↓user [variables.RequestableVariable-1659854045975]: 
+↓password [variables.RequestableVariable-1659854053150]: 
+↓OK [core.TestCase]: 
+  ↓user [variables.TestCaseVariable-1659854067771]: 
+    value: admin@qycf.onmicrosoft.com
+  ↓password [variables.TestCaseVariable-1659854067773]: 
+    value: 
+      - ↑ciphered: true
+      - ↑traceable: false
+      - →→: xf5254abfffc0d4178afb9f473a13d698
+    visibility: '-1'

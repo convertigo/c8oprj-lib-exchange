@@ -2,4 +2,4 @@
 ↓lib_Exchange [core.Project]: 
   comment: This is the EWS (Exchange Web Service) Connector for Microsoft Exchange
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
-  ↓NewSequence [sequences.GenericSequence]: 🗏 sequences/NewSequence.yaml
+  ↓Login [sequences.GenericSequence]: 🗏 sequences/Login.yaml
