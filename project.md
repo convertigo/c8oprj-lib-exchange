@@ -1,7 +1,7 @@
 
 # ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/core/images/project_color_16x16.png?raw=true "Project") lib_Exchange
 
-This is the EWS (Exchnage Web Service) Connector for Microsoft Exchange
+This is the EWS (Exchange Web Service) Connector for Microsoft Exchange
 
 <details><summary><span style="color:DarkGoldenRod"><i>Connectors</i></span></summary><blockquote><p>
 

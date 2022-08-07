@@ -1,5 +1,5 @@
 ↑convertigo: 8.0.0.m006
 ↓lib_Exchange [core.Project]: 
-  comment: This is the EWS (Exchnage Web Service) Connector for Microsoft Exchange
+  comment: This is the EWS (Exchange Web Service) Connector for Microsoft Exchange
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓NewSequence [sequences.GenericSequence]: 🗏 sequences/NewSequence.yaml
