@@ -1,4 +1,16 @@
 accessibility: Hidden
+↓Get_from_session [steps.SessionGetStep-1659955121604]: 
+  key: oAuthAccessToken
+↓jSimpleSource [steps.SimpleSourceStep-1659955163821]: 
+  sourceDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - java.lang.String: 
+          - ↑value: 1659955121604
+        - java.lang.String: 
+          - ↑value: ./expression/text()
+  variableName: OAuthAccesssToken
 ↓EWSLogin [steps.SimpleStep-1659854153585]: 
   expression: |
     'var EWSApi = JavaImporter(
@@ -29,17 +41,34 @@ accessibility: Hidden
     	service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
     	service.setTraceEnabled(true);
     	service.setTraceListener(TraceListener);
-    	credentials = new WebCredentials(user, password);
-    	service.setCredentials(credentials);
     	
+    	// This is to use as User / PAssword.. May work for On prem Installations
+    	// Seems this is disabled for Office365.
+    	
+    	if (OAuthAccesssToken == undefined) {
+    		log.warn("Using User / PAssword");
+    		credentials = new WebCredentials(user, password);
+    		service.setCredentials(credentials);
+    	} else {
+    		// We have an OAuth Token from a Previous OAUth Sequence Login. SO use it.
+    		log.warn("Using OAuth. OAuth Token is : " + OAuthAccesssToken);
+    		service.getHttpHeaders().put("Authorization", OAuthAccesssToken);
+    	}
+    	
+    	// Uncomment to enable Autodiscovery.. Seems not to work with Office 365
+    	// We will try it on a Real Exchange Instance
     	// service.autodiscoverUrl(user, RedirectionUrlCallback);
+    	
+    	// This is set to this value for Office365 exchange Online.. We will have to check
+    	// ff Setting an other URL Works of On Prem Exchange Installations.
     	url = new URI("https://outlook.office365.com/EWS/Exchange.asmx")
     	service.setUrl(url);
     	
+    	// Now Try to send an Email..
     	msg= new EmailMessage(service);
     	msg.setSubject("Hello world!");
     	msg.setBody(MessageBody.getMessageBodyFromText("Sent using the EWS Java API."));
-    	msg.getToRecipients().add("olivierp@convertigo.onmicrosoft.com");
+    	msg.getToRecipients().add("olivierp@convertigo.com");
     	msg.send();
     }
     '

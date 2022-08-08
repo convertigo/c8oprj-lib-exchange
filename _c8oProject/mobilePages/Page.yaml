@@ -1,0 +1,55 @@
+↑isRoot: true
+segment: path-to-page
+title: Title for Page
+↓Content [ngx.components.UIDynamicElement-1659949813528]: 
+  beanData: '{"ionBean":"Content"}'
+  tagName: ion-content
+  ↓H1 [ngx.components.UIDynamicElement-1659949881901]: 
+    beanData: '{"ionBean":"Heading1"}'
+    tagName: h1
+    ↓Text [ngx.components.UIText-1659949881904]: 
+      textValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: plain:Heading 1
+  ↓Button [ngx.components.UIDynamicElement-1659949895589]: 
+    beanData: '{"ionBean":"Button"}'
+    tagName: ion-button
+    ↓Label [ngx.components.UIDynamicElement-1659949895592]: 
+      beanData: '{"ionBean":"Label"}'
+      tagName: ion-label
+      ↓Text [ngx.components.UIText-1659949895595]: 
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:Click to Login With Microsoft Office 365
+    ↓Event [ngx.components.UIControlEvent-1659949895598]: 
+      ↓OAuthLogin [ngx.components.UIDynamicAction-1659949969265]: 
+        beanData: |
+          '{
+           "ionBean": "OAuthLoginAction",
+           "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_Exchange\",\"input\":\"\",\"model\":{\"data\":[{\"sequence\":\"lib_OAuth.GetOAuthCredentials\",\"marker\":\"\"}],\"path\":\"?.AzureAdClientID\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}",
+           "tenantid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_Exchange\",\"input\":\"\",\"model\":{\"data\":[{\"sequence\":\"lib_OAuth.GetOAuthCredentials\",\"marker\":\"\"}],\"path\":\"?.AzureAdTenantID\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}",
+           "scope": "plain:openid%20https%3A%2F%2Foutlook.office365.com%2FEWS.AccessAsUser.All",
+           "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html"
+          }'
+  ↓FormatLayout [ngx.components.UIDynamicAttr-1659949907407]: 
+    beanData: '{"ionBean":"FormatLayout","TextAlignment":"plain:ion-text-center"}'
+    selfClose: false
+  ↓Button1 [ngx.components.UIDynamicElement-1659955049363]: 
+    beanData: '{"ionBean":"Button"}'
+    tagName: ion-button
+    ↓Label [ngx.components.UIDynamicElement-1659955049366]: 
+      beanData: '{"ionBean":"Label"}'
+      tagName: ion-label
+      ↓Text [ngx.components.UIText-1659955049369]: 
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:Execute EWS Request
+    ↓Event [ngx.components.UIControlEvent-1659955049372]: 
+      ↓CallSequence [ngx.components.UIDynamicAction-1659955083179]: 
+        beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Exchange.Login"}'
+↓PageEvent [ngx.components.UIPageEvent-1659949987035]: 
+  ↓CallSequence [ngx.components.UIDynamicAction-1659949994999]: 
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_OAuth.GetOAuthCredentials"}'
