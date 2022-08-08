@@ -1,4 +1,11 @@
 accessibility: Hidden
+comment: |
+  Creates a session with Exchange Server. If Using user and password Authentication, provide them in the variables.
+  
+  If using OAuth, this will automatically use the OAuth Token available in the current user session.
+  
+  This sequence has to be called prior to any other sequences
+  
 ↓Get_from_session [steps.SessionGetStep-1659955121604]: 
   key: oAuthAccessToken
 ↓jSimpleSource [steps.SimpleSourceStep-1659955163821]: 
@@ -73,7 +80,9 @@ accessibility: Hidden
     }
     '
 ↓user [variables.RequestableVariable-1659854045975]: 
+  comment: The user name as an email address for Exchange On prem installations
 ↓password [variables.RequestableVariable-1659854053150]: 
+  comment: The user password for Exchange On Prem installations
 ↓OK [core.TestCase]: 
   ↓user [variables.TestCaseVariable-1659854067771]: 
     value: admin@qycf.onmicrosoft.com

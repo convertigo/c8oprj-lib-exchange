@@ -2,10 +2,11 @@
 ↓lib_Exchange [core.Project]: 
   comment: This is the EWS (Exchange Web Service) Connector for Microsoft Exchange
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
-  ↓Login [sequences.GenericSequence]: 🗏 sequences/Login.yaml
+  ↓CreateExchangeSession [sequences.GenericSequence]: 🗏 sequences/CreateExchangeSession.yaml
   ↓lib_OAuth_reference [references.ProjectSchemaReference]: 
     projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=334a638363d83d83bfed756b025f96226751e50e
   ↓Project_reference [references.ProjectSchemaReference]: 
     projectName: mobilebuilder_tpl_8_0_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_0_0_ngx.zip
   ↓Application [core.MobileApplication]: 
+    comment: This is a test app to perform OAuth and use the EWS Connector
     ↓NgxApp [ngx.components.ApplicationComponent]: 🗏 mobileNgxApp.yaml

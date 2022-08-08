@@ -49,7 +49,7 @@ title: Title for Page
             - MobileSmartSourceType: plain:Execute EWS Request
     ↓Event [ngx.components.UIControlEvent-1659955049372]: 
       ↓CallSequence [ngx.components.UIDynamicAction-1659955083179]: 
-        beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Exchange.Login"}'
+        beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Exchange.CreateExchangeSession"}'
 ↓PageEvent [ngx.components.UIPageEvent-1659949987035]: 
   ↓CallSequence [ngx.components.UIDynamicAction-1659949994999]: 
     beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_OAuth.GetOAuthCredentials"}'

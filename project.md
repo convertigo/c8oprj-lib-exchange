@@ -31,8 +31,13 @@ does nothing
 <details><summary><span style="color:DarkGoldenRod"><i>Sequences</i></span></summary><blockquote><p>
 
 
-## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") Login
+## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") CreateExchangeSession
 
+Creates a session with Exchange Server. If Using user and password Authentication, provide them in the variables.
+
+If using OAuth, this will automatically use the OAuth Token available in the current user session.
+
+This sequence has to be called prior to any other sequences
 
 
 <span style="color:DarkGoldenRod">Variables</span>
@@ -51,7 +56,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;password
 </td>
 <td>
-
+The user password for Exchange On Prem installations
 </td>
 </tr>
 <tr>
@@ -59,7 +64,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;user
 </td>
 <td>
-
+The user name as an email address for Exchange On prem installations
 </td>
 </tr>
 </table>
@@ -71,7 +76,7 @@ comment
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/core/images/mobileapplication_color_16x16.png?raw=true "MobileApplication") Application
 
-
+This is a test app to perform OAuth and use the EWS Connector
 
 <details><summary><span style="color:DarkGoldenRod"><i>Pages</i></span></summary><blockquote><p>
 
