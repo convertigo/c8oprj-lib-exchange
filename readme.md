@@ -9,8 +9,7 @@ This is the EWS (Exchange Web Service) Connector for Microsoft Exchange
 For more technical informations : [documentation](./project.md)
 
 - [Installation](#installation)
-- [Sequences](#sequences)
-    - [NewSequence](#newsequence)
+- [Mobile Library](#mobile-library)
 
 
 ## Installation
@@ -35,9 +34,9 @@ For more technical informations : [documentation](./project.md)
 3. Click the `Finish` button. This will automatically import the __lib_Exchange__ project
 
 
-## Sequences
+## Mobile Library
 
-### NewSequence
+This is a test app to perform OAuth and use the EWS Connector
 
 
 
