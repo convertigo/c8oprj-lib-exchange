@@ -31,6 +31,7 @@ title: Title for Page
            "clientid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_Exchange\",\"input\":\"\",\"model\":{\"data\":[{\"sequence\":\"lib_OAuth.GetOAuthCredentials\",\"marker\":\"\"}],\"path\":\"?.AzureAdClientID\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}",
            "tenantid": "source:{\"filter\":\"Sequence\",\"project\":\"lib_Exchange\",\"input\":\"\",\"model\":{\"data\":[{\"sequence\":\"lib_OAuth.GetOAuthCredentials\",\"marker\":\"\"}],\"path\":\"?.AzureAdTenantID\",\"prefix\":\"\",\"suffix\":\"\",\"custom\":\"\",\"useCustom\":false}}",
            "scope": "plain:openid%20https%3A%2F%2Foutlook.office365.com%2FEWS.AccessAsUser.All",
+           "loginRequestable": "plain:lib_Exchange.loginAzureAdWithAccessToken",
            "callbackurl": "plain:https:\/\/c8ocloud.convertigo.net\/convertigo\/projects\/lib_OAuth\/getToken.html"
           }'
   ↓FormatLayout [ngx.components.UIDynamicAttr-1659949907407]: 
@@ -46,10 +47,54 @@ title: Title for Page
         textValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: plain:Execute EWS Request
+            - MobileSmartSourceType: plain:Create EWSSession
     ↓Event [ngx.components.UIControlEvent-1659955049372]: 
       ↓CallSequence [ngx.components.UIDynamicAction-1659955083179]: 
         beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Exchange.CreateExchangeSession"}'
+  ↓Button2 [ngx.components.UIDynamicElement-1659982303737]: 
+    beanData: '{"ionBean":"Button"}'
+    tagName: ion-button
+    ↓Label [ngx.components.UIDynamicElement-1659982303740]: 
+      beanData: '{"ionBean":"Label"}'
+      tagName: ion-label
+      ↓Text [ngx.components.UIText-1659982303743]: 
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:SendMail
+    ↓Event [ngx.components.UIControlEvent-1659982303746]: 
+      ↓CallSequence [ngx.components.UIDynamicAction-1659982303749]: 
+        beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Exchange.SendEmail"}'
+        ↓Subject [ngx.components.UIControlVariable-1660034370837]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:TEST MAIL SUBJECT
+        ↓Body [ngx.components.UIControlVariable-1660034370839]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:TEST MAIL BODY
+        ↓To [ngx.components.UIControlVariable-1660034370841]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: script:'[ "olivierp@convertigo.com"]'
+        ↓Cc [ngx.components.UIControlVariable-1660034905468]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: script:'[ "olivierp@convertigo.com"]'
+        ↓Bcc [ngx.components.UIControlVariable-1660034912055]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: script:'[ "olivierp@convertigo.com"]'
 ↓PageEvent [ngx.components.UIPageEvent-1659949987035]: 
   ↓CallSequence [ngx.components.UIDynamicAction-1659949994999]: 
     beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_OAuth.GetOAuthCredentials"}'

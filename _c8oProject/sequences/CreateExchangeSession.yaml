@@ -1,4 +1,3 @@
-accessibility: Hidden
 comment: |
   Creates a session with Exchange Server. If Using user and password Authentication, provide them in the variables.
   
@@ -7,7 +6,7 @@ comment: |
   This sequence has to be called prior to any other sequences
   
 ↓Get_from_session [steps.SessionGetStep-1659955121604]: 
-  key: oAuthAccessToken
+  key: EwsOAuthAccessToken
 ↓jSimpleSource [steps.SimpleSourceStep-1659955163821]: 
   sourceDefinition: 
     - xmlizable: 
@@ -43,7 +42,6 @@ comment: |
     	}
     }
     
-    
     with (EWSApi) {
     	service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
     	service.setTraceEnabled(true);
@@ -71,12 +69,10 @@ comment: |
     	url = new URI("https://outlook.office365.com/EWS/Exchange.asmx")
     	service.setUrl(url);
     	
-    	// Now Try to send an Email..
-    	msg= new EmailMessage(service);
-    	msg.setSubject("Hello world!");
-    	msg.setBody(MessageBody.getMessageBodyFromText("Sent using the EWS Java API."));
-    	msg.getToRecipients().add("olivierp@convertigo.com");
-    	msg.send();
+    	// Save service in Convertigo Session, so that any other sequece can retreive it
+    	context.httpSession.setAttribute("EWSSession", service);
+    	
+    	
     }
     '
 ↓user [variables.RequestableVariable-1659854045975]: 

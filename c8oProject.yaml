@@ -3,6 +3,8 @@
   comment: This is the EWS (Exchange Web Service) Connector for Microsoft Exchange
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓CreateExchangeSession [sequences.GenericSequence]: 🗏 sequences/CreateExchangeSession.yaml
+  ↓loginAzureAdWithAccessToken [sequences.GenericSequence]: 🗏 sequences/loginAzureAdWithAccessToken.yaml
+  ↓SendEmail [sequences.GenericSequence]: 🗏 sequences/SendEmail.yaml
   ↓lib_OAuth_reference [references.ProjectSchemaReference]: 
     projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=334a638363d83d83bfed756b025f96226751e50e
   ↓Project_reference [references.ProjectSchemaReference]: 

@@ -1,0 +1,55 @@
+comment: |
+  Perform the OAuth flow for AzureAD
+  
+  If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
+  
+  Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+  
+↓Input_variables [steps.InputVariablesStep-1660032690198]: 
+↓bearer [steps.XMLConcatStep-1660032690201]: 
+  nodeName: bearer
+  output: false
+  sourcesDefinition: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: Bearer
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: description
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1660032690198
+                - java.lang.String: 
+                  - ↑value: ./access_token/text()
+            - java.lang.String: 
+              - ↑value: ''
+↓SaveEWSTokenInUserSession [steps.SessionSetStep-1660032690205]: 
+  expression: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: SOURCE
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1660032690201
+          - java.lang.String: 
+            - ↑value: ./text()
+  key: EwsOAuthAccessToken
+↓login [steps.XMLElementStep-1660032690220]: 
+  nodeName: login
+  nodeText: ok
+↓access_token [variables.RequestableVariable-1660032690238]: 

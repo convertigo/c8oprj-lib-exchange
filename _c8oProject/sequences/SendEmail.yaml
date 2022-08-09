@@ -1,0 +1,57 @@
+↓EWSSendMail [steps.SimpleStep-1660031407628]: 
+  expression: |
+    'var EWSApi = JavaImporter(
+    	Packages.microsoft.exchange.webservices.data.core.ExchangeService,
+    	Packages.microsoft.exchange.webservices.data.credential.WebCredentials,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion,
+    	Packages.microsoft.exchange.webservices.data.core.service.item.EmailMessage,
+    	Packages.microsoft.exchange.webservices.data.property.complex.MessageBody,
+    	
+    	Packages.java.net.URI
+    );
+    
+    TraceListener = {
+    	trace: function(topic, data) {
+    		log.warn(topic + ":" + data)
+    	}
+    }
+    
+    with (EWSApi) {
+    	service = context.httpSession.getAttribute("EWSSession");
+    	service.setTraceEnabled(true);
+    	service.setTraceListener(TraceListener);
+    	
+    	msg= new EmailMessage(service);
+    	msg.setSubject(Subject);
+    	msg.setBody(MessageBody.getMessageBodyFromText(Body));
+    	
+    	if (To) {
+    		aTo = JSON.parse(To);
+    		for (to of aTo)
+    			msg.getToRecipients().add(to);
+    	}		
+    	if (Cc) {
+    		aCc = JSON.parse(Cc);
+    		for (cc of aCc)
+    			msg.getCcRecipients().add(cc);
+    	}		
+    	if (Bcc) {
+    		aBcc = JSON.parse(Bcc);
+    		for (bcc of aBcc)
+    			msg.getBccRecipients().add(bcc);
+    	}		
+    	msg.send();//todo
+    }
+    '
+↓Subject [variables.RequestableVariable-1660033726571]: 
+  comment: The subject of the email as a string
+↓Body [variables.RequestableVariable-1660033733531]: 
+  comment: The body as a String
+↓To [variables.RequestableVariable-1660033746053]: 
+  comment: A JSON array of to recipients
+↓Cc [variables.RequestableVariable-1660033754254]: 
+  comment: A JSON array of cc recipients
+↓Bcc [variables.RequestableVariable-1660033764567]: 
+  comment: A JSON array of Bcc recipients
+↓From [variables.RequestableVariable-1660033777418]: 
+  comment: The email of the user sending the mail
