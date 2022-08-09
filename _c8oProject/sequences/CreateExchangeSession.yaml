@@ -1,7 +1,5 @@
 comment: |
-  Creates a session with Exchange Server. If Using user and password Authentication, provide them in the variables.
-  
-  If using OAuth, this will automatically use the OAuth Token available in the current user session.
+  Creates a session with Exchange Server. If Using user and password Authentication, provide them in the variables. If using OAuth, this will automatically use the EWS OAuth Token available in the current user session.
   
   This sequence has to be called prior to any other sequences
   

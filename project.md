@@ -36,9 +36,7 @@ does nothing
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") CreateExchangeSession
 
-Creates a session with Exchange Server. If Using user and password Authentication, provide them in the variables.
-
-If using OAuth, this will automatically use the OAuth Token available in the current user session.
+Creates a session with Exchange Server. If Using user and password Authentication, provide them in the variables. If using OAuth, this will automatically use the EWS OAuth Token available in the current user session.
 
 This sequence has to be called prior to any other sequences
 
@@ -74,16 +72,12 @@ The user name as an email address for Exchange On prem installations
 
 </p></blockquote></details>
 
-<details><summary><b>loginAzureAdWithAccessToken</b> : Perform the OAuth flow for AzureAD</summary><blockquote><p>
+<details><summary><b>loginAzureAdWithAccessToken</b> : Perform the OAuth flow for AzureAD If the token is valid, it will be stored as a special EWS OAuth token in the user's session to be used when calling EWS APIs</summary><blockquote><p>
 
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") loginAzureAdWithAccessToken
 
-Perform the OAuth flow for AzureAD
-
-If the token is valid, it will be stored in the user's session to be used when calling Microsoft APIs.
-
-Also if the token is valid, setAuthenticatedUser step is executed to flag this session as authenticated.
+Perform the OAuth flow for AzureAD If the token is valid, it will be stored as a special EWS OAuth token in the user's session to be used when calling EWS APIs.
 
 
 <span style="color:DarkGoldenRod">Variables</span>
@@ -109,12 +103,12 @@ comment
 
 </p></blockquote></details>
 
-<details><summary><b>SendEmail</b></summary><blockquote><p>
+<details><summary><b>SendEmail</b> : Sends an email usinf EWS services</summary><blockquote><p>
 
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") SendEmail
 
-
+Sends an email usinf EWS services.
 
 <span style="color:DarkGoldenRod">Variables</span>
 
