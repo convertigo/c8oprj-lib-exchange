@@ -132,7 +132,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;Bcc
 </td>
 <td>
-A JSON array of Bcc recipients
+A stringified JSON array of Bcc recipients
 </td>
 </tr>
 <tr>
@@ -148,7 +148,7 @@ The body as a String
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;Cc
 </td>
 <td>
-A JSON array of cc recipients
+A stringified JSON array of cc recipients
 </td>
 </tr>
 <tr>
@@ -172,7 +172,7 @@ The subject of the email as a string
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;To
 </td>
 <td>
-A JSON array of to recipients
+A stringified JSON array of to recipients
 </td>
 </tr>
 </table>

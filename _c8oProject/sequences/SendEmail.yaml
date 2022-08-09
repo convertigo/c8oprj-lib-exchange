@@ -48,10 +48,10 @@
 ↓Body [variables.RequestableVariable-1660033733531]: 
   comment: The body as a String
 ↓To [variables.RequestableVariable-1660033746053]: 
-  comment: A JSON array of to recipients
+  comment: A stringified JSON array of to recipients
 ↓Cc [variables.RequestableVariable-1660033754254]: 
-  comment: A JSON array of cc recipients
+  comment: A stringified JSON array of cc recipients
 ↓Bcc [variables.RequestableVariable-1660033764567]: 
-  comment: A JSON array of Bcc recipients
+  comment: A stringified JSON array of Bcc recipients
 ↓From [variables.RequestableVariable-1660033777418]: 
   comment: The email of the user sending the mail
