@@ -5,8 +5,10 @@ comment: Sends an email usinf EWS services.
     	Packages.microsoft.exchange.webservices.data.core.ExchangeService,
     	Packages.microsoft.exchange.webservices.data.credential.WebCredentials,
     	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ConnectingIdType,
     	Packages.microsoft.exchange.webservices.data.core.service.item.EmailMessage,
     	Packages.microsoft.exchange.webservices.data.property.complex.MessageBody,
+    	Packages.microsoft.exchange.webservices.data.misc.ImpersonatedUserId,
     	
     	Packages.java.net.URI
     );
@@ -17,33 +19,60 @@ comment: Sends an email usinf EWS services.
     	}
     }
     
+    function MyError(msg) {
+    	log.error(msg)
+    }
+    
     with (EWSApi) {
+    	bError = false
     	service = context.httpSession.getAttribute("EWSSession");
-    	service.setTraceEnabled(true);
-    	service.setTraceListener(TraceListener);
+    	log.debug("EWS Service = " + service);
     	
-    	msg= new EmailMessage(service);
-    	msg.setSubject(Subject);
-    	msg.setBody(MessageBody.getMessageBodyFromText(Body));
-    	
-    	if (To) {
-    		aTo = JSON.parse(To);
-    		for (to of aTo)
-    			msg.getToRecipients().add(to);
-    	}		
-    	if (Cc) {
-    		aCc = JSON.parse(Cc);
-    		for (cc of aCc)
-    			msg.getCcRecipients().add(cc);
-    	}		
-    	if (Bcc) {
-    		aBcc = JSON.parse(Bcc);
-    		for (bcc of aBcc)
-    			msg.getBccRecipients().add(bcc);
-    	}		
-    	msg.send();//todo
+    	if (service != null) { 
+    		service.setTraceEnabled(true);
+    		service.setTraceListener(TraceListener);
+    		
+    		
+    		if (From)
+    			service.setImpersonatedUserId(new ImpersonatedUserId(ConnectingIdType.SmtpAddress, From));
+    		
+    		
+    		msg= new EmailMessage(service);
+    		msg.setSubject(Subject);
+    		msg.setBody(MessageBody.getMessageBodyFromText(Body));
+    		
+    		if (To) {
+    			aTo = JSON.parse(To);
+    			for (to of aTo)
+    				msg.getToRecipients().add(to);
+    		}		
+    		if (Cc) {
+    			aCc = JSON.parse(Cc);
+    			for (cc of aCc)
+    				msg.getCcRecipients().add(cc);
+    		}		
+    		if (Bcc) {
+    			aBcc = JSON.parse(Bcc);
+    			for (bcc of aBcc)
+    				msg.getBccRecipients().add(bcc);
+    		}		
+    		msg.send();
+    	}
+    	else {
+    		MyError("EWS Connector : The EWS Session has not been established . Call The CreateExchangeSession Sequence first")
+    		bError = true
+    	}
     }
     '
+↓jIf [steps.IfStep-1660067417223]: 
+  condition: bError
+  ↓Error_structure [steps.XMLErrorStep-1660067437280]: 
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: PLAIN
+          - →→: 'EWS Connector : The EWS Session has not been established . Call The CreateExchangeSession Sequence first'
 ↓Subject [variables.RequestableVariable-1660033726571]: 
   comment: The subject of the email as a string
 ↓Body [variables.RequestableVariable-1660033733531]: 

@@ -5,6 +5,7 @@ comment: |
   
 ↓Get_from_session [steps.SessionGetStep-1659955121604]: 
   key: EwsOAuthAccessToken
+  output: false
 ↓jSimpleSource [steps.SimpleSourceStep-1659955163821]: 
   sourceDefinition: 
     - xmlizable: 
@@ -41,17 +42,22 @@ comment: |
     }
     
     with (EWSApi) {
+    	error = null;
     	service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
     	service.setTraceEnabled(true);
     	service.setTraceListener(TraceListener);
-    	
-    	// This is to use as User / PAssword.. May work for On prem Installations
-    	// Seems this is disabled for Office365.
-    	
+    		
     	if (OAuthAccesssToken == undefined) {
-    		log.warn("Using User / PAssword");
-    		credentials = new WebCredentials(user, password);
-    		service.setCredentials(credentials);
+    		// This is to use as User / Password.. May work for On prem Installations
+    		// Seems this is disabled for Office365.
+    		log.warn("No OAuthAcess Token is availale so Using User / Password");
+    		if (!user || ! password) {
+    			error = "Error, User and password must be provided if not using OAuth"
+    			log.error(error);
+    		} else {
+    			credentials = new WebCredentials(user, password);
+    			service.setCredentials(credentials);
+    		}		
     	} else {
     		// We have an OAuth Token from a Previous OAUth Sequence Login. SO use it.
     		log.warn("Using OAuth. OAuth Token is : " + OAuthAccesssToken);
@@ -67,12 +73,19 @@ comment: |
     	url = new URI("https://outlook.office365.com/EWS/Exchange.asmx")
     	service.setUrl(url);
     	
-    	// Save service in Convertigo Session, so that any other sequece can retreive it
+    	// Save service in Convertigo Session, so that any other sequence can retreive it
     	context.httpSession.setAttribute("EWSSession", service);
-    	
-    	
     }
     '
+↓jIf [steps.IfStep-1660114586894]: 
+  condition: error != null
+  ↓Error_structure [steps.XMLErrorStep-1660114598990]: 
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: JS
+          - →→: error
 ↓user [variables.RequestableVariable-1659854045975]: 
   comment: The user name as an email address for Exchange On prem installations
 ↓password [variables.RequestableVariable-1659854053150]: 

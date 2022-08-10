@@ -82,19 +82,23 @@ title: Title for Page
           varValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: script:'[ "olivierp@convertigo.com"]'
+              - MobileSmartSourceType: script:'[ "admin@qycf.onmicrosoft.com"]'
         ↓Cc [ngx.components.UIControlVariable-1660034905468]: 
           comment: new variable
           varValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: script:'[ "olivierp@convertigo.com"]'
+              - MobileSmartSourceType: script:'[ "admin@qycf.onmicrosoft.com", "AdeleV@qycf.onmicrosoft.com", "DiegoS@qycf.onmicrosoft.com", "AlexW@qycf.onmicrosoft.com", "HenriettaM@qycf.onmicrosoft.com"]'
         ↓Bcc [ngx.components.UIControlVariable-1660034912055]: 
           comment: new variable
           varValue: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-              - MobileSmartSourceType: script:'[ "olivierp@convertigo.com"]'
+              - MobileSmartSourceType: script:'[ "admin@qycf.onmicrosoft.com"]'
+        ↓If [ngx.components.UIDynamicAction-1660117694207]: 
+          beanData: '{"ionBean":"IfAction","condition":"script:parent.out.error"}'
+          ↓Toast [ngx.components.UIDynamicAction-1660117715904]: 
+            beanData: '{"ionBean":"ToastAction","message":"source:{\"filter\":\"Action\",\"project\":\"lib_Exchange\",\"input\":\"\",\"model\":{\"data\":[{\"priority\":1659982303749}],\"path\":\"?.out?.error\",\"prefix\":\"\",\"suffix\":\".message\",\"custom\":\"\",\"useCustom\":false}}"}'
 ↓PageEvent [ngx.components.UIPageEvent-1659949987035]: 
   ↓CallSequence [ngx.components.UIDynamicAction-1659949994999]: 
     beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_OAuth.GetOAuthCredentials"}'
