@@ -56,7 +56,7 @@ comment: Sends an email usinf EWS services.
     			for (bcc of aBcc)
     				msg.getBccRecipients().add(bcc);
     		}		
-    		msg.send();
+    		msg.sendAndSaveCopy();
     	}
     	else {
     		MyError("EWS Connector : The EWS Session has not been established . Call The CreateExchangeSession Sequence first")
