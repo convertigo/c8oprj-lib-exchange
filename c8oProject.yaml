@@ -12,6 +12,9 @@
     | Symbol            | Usage                  |
     |-------------------|----------------------|
     | lib_exchange.EWSUrl  | The url to access EWS Api for On Prem Exchange servers. This should be in the form ''https://&lt;exchange.server.dns.name&gt;/ews/exchange.asmx''   |
+    | lib_exchange.ServiceAccount  | an Exchange Service account having the Impersonation privilege as an email address. See https://www.codetwo.com/kb/how-to-set-impersonation-rights-manually/ on how to configure impersonation for an account |
+    | lib_exchange.ServiceAccountPassword.secret  | The password for this service account |
+    
     '
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓CreateExchangeSession [sequences.GenericSequence]: 🗏 sequences/CreateExchangeSession.yaml

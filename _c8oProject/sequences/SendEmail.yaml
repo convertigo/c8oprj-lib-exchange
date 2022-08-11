@@ -95,3 +95,4 @@ comment: Sends an email usinf EWS services.
   ↓Cc [variables.TestCaseVariable-1660162742650]: 
   ↓Bcc [variables.TestCaseVariable-1660162742652]: 
   ↓From [variables.TestCaseVariable-1660162742654]: 
+    value: charlesg@exchange.convertigo.com

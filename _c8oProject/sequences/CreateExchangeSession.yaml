@@ -88,18 +88,17 @@ comment: |
           - ↑mode: JS
           - →→: error
 ↓user [variables.RequestableVariable-1659854045975]: 
-  comment: The user name as an email address for Exchange On prem installations
+  comment: The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Automatically provided by the symbol but can be overrided
+  value: ${lib_exchange.ServiceAccount}
 ↓password [variables.RequestableVariable-1659854053150]: 
-  comment: The user password for Exchange On Prem installations
+  comment: |
+    The user password for Exchange On Prem installations. Automatically provided by the symbol but can be overrided
+    
+  value: 
+    - ↑ciphered: true
+    - ↑traceable: false
+    - →→: xdef9fd9ad3175a305d471f48abb2dd7799140de5ba4fd55664d59fd8d32378becaf576b9c980e9098cda18f212779e84
+  visibility: '-1'
 ↓EWSUrl [variables.RequestableVariable-1660194805940]: 
   comment: The EWS Url. Automatically provided by the Symbol
   value: ${lib_exchange.EWSUrl}
-↓OK [core.TestCase]: 
-  ↓user [variables.TestCaseVariable-1659854067771]: 
-    value: administrateur@exchange.convertigo.com
-  ↓password [variables.TestCaseVariable-1659854067773]: 
-    value: 
-      - ↑ciphered: true
-      - ↑traceable: false
-      - →→: x605632721724969e014b3d77bd7b02bb08c7ef6765647abcaba95bb950534386
-    visibility: '-1'

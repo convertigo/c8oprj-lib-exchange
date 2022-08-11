@@ -12,6 +12,9 @@ For On Prem Installations, you can use directly the  CreateExchangeSession Seque
 | Symbol            | Usage                  |
 |-------------------|----------------------|
 | lib_exchange.EWSUrl  | The url to access EWS Api for On Prem Exchange servers. This should be in the form 'https://&lt;exchange.server.dns.name&gt;/ews/exchange.asmx'   |
+| lib_exchange.ServiceAccount  | an Exchange Service account having the Impersonation privilege as an email address. See https://www.codetwo.com/kb/how-to-set-impersonation-rights-manually/ on how to configure impersonation for an account |
+| lib_exchange.ServiceAccountPassword.secret  | The password for this service account |
+
 
 
 <details><summary><span style="color:DarkGoldenRod"><i>References</i></span></summary><blockquote><p>
@@ -76,7 +79,8 @@ The EWS Url. Automatically provided by the Symbol
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;password
 </td>
 <td>
-The user password for Exchange On Prem installations
+The user password for Exchange On Prem installations. Automatically provided by the symbol but can be overrided
+
 </td>
 </tr>
 <tr>
@@ -84,7 +88,7 @@ The user password for Exchange On Prem installations
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;user
 </td>
 <td>
-The user name as an email address for Exchange On prem installations
+The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Automatically provided by the symbol but can be overrided
 </td>
 </tr>
 </table>

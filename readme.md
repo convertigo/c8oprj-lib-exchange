@@ -14,6 +14,9 @@ For On Prem Installations, you can use directly the  CreateExchangeSession Seque
 | Symbol            | Usage                  |
 |-------------------|----------------------|
 | lib_exchange.EWSUrl  | The url to access EWS Api for On Prem Exchange servers. This should be in the form 'https://&lt;exchange.server.dns.name&gt;/ews/exchange.asmx'   |
+| lib_exchange.ServiceAccount  | an Exchange Service account having the Impersonation privilege as an email address. See https://www.codetwo.com/kb/how-to-set-impersonation-rights-manually/ on how to configure impersonation for an account |
+| lib_exchange.ServiceAccountPassword.secret  | The password for this service account |
+
 
 
 
@@ -68,10 +71,11 @@ This sequence has to be called prior to any other sequences
 <td>EWSUrl</td><td>The EWS Url. Automatically provided by the Symbol</td>
 </tr>
 <tr>
-<td>password</td><td>The user password for Exchange On Prem installations</td>
+<td>password</td><td>The user password for Exchange On Prem installations. Automatically provided by the symbol but can be overrided
+</td>
 </tr>
 <tr>
-<td>user</td><td>The user name as an email address for Exchange On prem installations</td>
+<td>user</td><td>The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Automatically provided by the symbol but can be overrided</td>
 </tr>
 </table>
 
