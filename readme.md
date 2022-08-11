@@ -3,7 +3,21 @@
 
 # lib_Exchange
 
-This is the EWS (Exchange Web Service) Connector for Microsoft Exchange
+This is the EWS (Exchange Web Service) Connector for Microsoft Exchange. This will work for Exchange On Line (Office365 Exchange Server) and for On Exchange On Prem installations.
+
+The Connector needs an Authentication to work. For Exchange One Line , you must use OAuth. A Simple Test app is provided to Show how to establish an OAuth Auth and then call the CreateExchangeSession Sequence.
+
+For On Prem Installations, you can use directly the  CreateExchangeSession Sequence by providing user and password.
+
+## Symbols
+
+| Symbol            | Usage                  |
+|-------------------|----------------------|
+| lib_exchange.EWSUrl  | The url to access EWS Api for On Prem Exchnage servers. This should be in the form 'https://<sever dns name>/ews/exchange.asmx'   |
+|-------------------|----------------------|
+
+
+
 
 
 For more technical informations : [documentation](./project.md)
@@ -52,6 +66,9 @@ This sequence has to be called prior to any other sequences
 <table>
 <tr>
 <th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>EWSUrl</td><td></td>
 </tr>
 <tr>
 <td>password</td><td>The user password for Exchange On Prem installations</td>

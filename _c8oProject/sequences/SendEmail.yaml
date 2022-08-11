@@ -85,3 +85,13 @@ comment: Sends an email usinf EWS services.
   comment: A stringified JSON array of Bcc recipients
 ↓From [variables.RequestableVariable-1660033777418]: 
   comment: The email of the user sending the mail
+↓TestOK [core.TestCase]: 
+  ↓Subject [variables.TestCaseVariable-1660162742644]: 
+    value: TEST MAIL
+  ↓Body [variables.TestCaseVariable-1660162742646]: 
+    value: TEST MAIL
+  ↓To [variables.TestCaseVariable-1660162742648]: 
+    value: '["administrateur@exchange.convertigo.com"] '
+  ↓Cc [variables.TestCaseVariable-1660162742650]: 
+  ↓Bcc [variables.TestCaseVariable-1660162742652]: 
+  ↓From [variables.TestCaseVariable-1660162742654]: 

@@ -55,6 +55,7 @@ comment: |
     			error = "Error, User and password must be provided if not using OAuth"
     			log.error(error);
     		} else {
+    			url = new URI(EWSUrl)
     			credentials = new WebCredentials(user, password);
     			service.setCredentials(credentials);
     		}		
@@ -62,6 +63,7 @@ comment: |
     		// We have an OAuth Token from a Previous OAUth Sequence Login. SO use it.
     		log.warn("Using OAuth. OAuth Token is : " + OAuthAccesssToken);
     		service.getHttpHeaders().put("Authorization", OAuthAccesssToken);
+    		url = new URI("https://outlook.office365.com/EWS/Exchange.asmx")
     	}
     	
     	// Uncomment to enable Autodiscovery.. Seems not to work with Office 365
@@ -70,7 +72,6 @@ comment: |
     	
     	// This is set to this value for Office365 exchange Online.. We will have to check
     	// ff Setting an other URL Works of On Prem Exchange Installations.
-    	url = new URI("https://outlook.office365.com/EWS/Exchange.asmx")
     	service.setUrl(url);
     	
     	// Save service in Convertigo Session, so that any other sequence can retreive it
@@ -90,21 +91,14 @@ comment: |
   comment: The user name as an email address for Exchange On prem installations
 ↓password [variables.RequestableVariable-1659854053150]: 
   comment: The user password for Exchange On Prem installations
+↓EWSUrl [variables.RequestableVariable-1660194805940]: 
+  value: ${lib_exchange.EWSUrl}
 ↓OK [core.TestCase]: 
   ↓user [variables.TestCaseVariable-1659854067771]: 
-    value: admin@qycf.onmicrosoft.com
+    value: administrateur@exchange.convertigo.com
   ↓password [variables.TestCaseVariable-1659854067773]: 
     value: 
       - ↑ciphered: true
       - ↑traceable: false
-      - →→: xf5254abfffc0d4178afb9f473a13d698
-    visibility: '-1'
-↓OK1 [core.TestCase]: 
-  ↓user [variables.TestCaseVariable-1659858126737]: 
-    value: olivierp@convertigo.onmicrosoft.com
-  ↓password [variables.TestCaseVariable-1659858126740]: 
-    value: 
-      - ↑ciphered: true
-      - ↑traceable: false
-      - →→: xf5254abfffc0d4178afb9f473a13d698
+      - →→: x605632721724969e014b3d77bd7b02bb08c7ef6765647abcaba95bb950534386
     visibility: '-1'

@@ -1,6 +1,21 @@
 ↑convertigo: 8.0.0.m006
 ↓lib_Exchange [core.Project]: 
-  comment: This is the EWS (Exchange Web Service) Connector for Microsoft Exchange
+  comment: |
+    'This is the EWS (Exchange Web Service) Connector for Microsoft Exchange. This will work for Exchange On Line (Office365 Exchange Server) and for On Exchange On Prem installations.
+    
+    The Connector needs an Authentication to work. For Exchange One Line , you must use OAuth. A Simple Test app is provided to Show how to establish an OAuth Auth and then call the CreateExchangeSession Sequence.
+    
+    For On Prem Installations, you can use directly the  CreateExchangeSession Sequence by providing user and password.
+    
+    ## Symbols
+    
+    | Symbol            | Usage                  |
+    |-------------------|----------------------|
+    | lib_exchange.EWSUrl  | The url to access EWS Api for On Prem Exchnage servers. This should be in the form ''https://<sever dns name>/ews/exchange.asmx''   |
+    |-------------------|----------------------|
+    
+    
+    '
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓CreateExchangeSession [sequences.GenericSequence]: 🗏 sequences/CreateExchangeSession.yaml
   ↓loginAzureAdWithAccessToken [sequences.GenericSequence]: 🗏 sequences/loginAzureAdWithAccessToken.yaml

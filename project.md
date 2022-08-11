@@ -1,7 +1,21 @@
 
 # ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/core/images/project_color_16x16.png?raw=true "Project") lib_Exchange
 
-This is the EWS (Exchange Web Service) Connector for Microsoft Exchange
+This is the EWS (Exchange Web Service) Connector for Microsoft Exchange. This will work for Exchange On Line (Office365 Exchange Server) and for On Exchange On Prem installations.
+
+The Connector needs an Authentication to work. For Exchange One Line , you must use OAuth. A Simple Test app is provided to Show how to establish an OAuth Auth and then call the CreateExchangeSession Sequence.
+
+For On Prem Installations, you can use directly the  CreateExchangeSession Sequence by providing user and password.
+
+## Symbols
+
+| Symbol            | Usage                  |
+|-------------------|----------------------|
+| lib_exchange.EWSUrl  | The url to access EWS Api for On Prem Exchnage servers. This should be in the form 'https://<sever dns name>/ews/exchange.asmx'   |
+|-------------------|----------------------|
+
+
+
 
 <details><summary><span style="color:DarkGoldenRod"><i>References</i></span></summary><blockquote><p>
 
@@ -51,6 +65,14 @@ name
 <th>
 comment
 </th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;EWSUrl
+</td>
+<td>
+
+</td>
 </tr>
 <tr>
 <td>
