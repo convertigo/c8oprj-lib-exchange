@@ -1,0 +1,72 @@
+comment: Creates an appointment in Calendar
+↓EWSCreateAppointment [steps.SimpleStep-1660203820705]: 
+  expression: |
+    'var EWSApi = JavaImporter(
+    	Packages.microsoft.exchange.webservices.data.core.ExchangeService,
+    	Packages.microsoft.exchange.webservices.data.credential.WebCredentials,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ConnectingIdType,
+    	Packages.microsoft.exchange.webservices.data.core.service.item.EmailMessage,
+    	Packages.microsoft.exchange.webservices.data.property.complex.MessageBody,
+    	Packages.microsoft.exchange.webservices.data.misc.ImpersonatedUserId,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.service.SendInvitationsMode,
+    	Packages.microsoft.exchange.webservices.data.core.service.item.Appointment,
+    	
+    	Packages.java.net.URI,
+    	Packages.java.util.Date
+    );
+    
+    TraceListener = {
+    	trace: function(topic, data) {
+    		log.warn(topic + ":" + data)
+    	}
+    }
+    
+    with (EWSApi) {
+    	error = null;
+    	service = context.httpSession.getAttribute("EWSSession");
+    	log.debug("EWS Service = " + service);
+    	
+    	if (service != null) { 
+    		service.setTraceEnabled(true);
+    		service.setTraceListener(TraceListener);
+    		
+    		jstart = new Date(Start * 1);
+    		jend = new Date(jstart.getTime() + Duration * 60);
+    		
+    		appointment = new Appointment(service);
+    		appointment.setBody(MessageBody.getMessageBodyFromText(Subject));
+    		appointment.setStart(jstart);
+    		appointment.setEnd(jend);
+    		appointment.setLocation(Location);
+    		appointment.setReminderDueBy(jend);
+    		appointment.save(SendInvitationsMode.SendToNone);
+    		
+    	} else {
+    		error = "EWS Connector : The EWS Session has not been established . Call The CreateExchangeSession Sequence first"
+    	}
+    }	
+    '
+↓jIf [steps.IfStep-1660204042167]: 
+  condition: error != null
+  ↓Error_structure [steps.XMLErrorStep-1660204059635]: 
+    message: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+        - SmartType: 
+          - ↑mode: JS
+          - →→: errror
+↓Subject [variables.RequestableVariable-1660203771170]: 
+↓Location [variables.RequestableVariable-1660203780187]: 
+↓Start [variables.RequestableVariable-1660203787687]: 
+↓Duration [variables.RequestableVariable-1660203795849]: 
+↓testOK [core.TestCase]: 
+  ↓Subject [variables.TestCaseVariable-1660204400613]: 
+    value: Demo Meeeting
+  ↓Location [variables.TestCaseVariable-1660204400615]: 
+    value: Convertigo Office
+  ↓Start [variables.TestCaseVariable-1660204400617]: 
+    description: 60
+    value: 1660204452448
+  ↓Duration [variables.TestCaseVariable-1660204400619]: 
+    value: 60
