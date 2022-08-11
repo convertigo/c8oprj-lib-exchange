@@ -11,10 +11,7 @@ For On Prem Installations, you can use directly the  CreateExchangeSession Seque
 
 | Symbol            | Usage                  |
 |-------------------|----------------------|
-| lib_exchange.EWSUrl  | The url to access EWS Api for On Prem Exchnage servers. This should be in the form 'https://<sever dns name>/ews/exchange.asmx'   |
-
-
-
+| lib_exchange.EWSUrl  | The url to access EWS Api for On Prem Exchange servers. This should be in the form 'https://exchange.server.dns.name/ews/exchange.asmx'   |
 
 
 <details><summary><span style="color:DarkGoldenRod"><i>References</i></span></summary><blockquote><p>
