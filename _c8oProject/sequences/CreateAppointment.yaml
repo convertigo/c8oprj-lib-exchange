@@ -11,7 +11,8 @@ comment: Creates an appointment in Calendar
     	Packages.microsoft.exchange.webservices.data.misc.ImpersonatedUserId,
     	Packages.microsoft.exchange.webservices.data.core.enumeration.service.SendInvitationsMode,
     	Packages.microsoft.exchange.webservices.data.core.service.item.Appointment,
-    	
+    	Packages.microsoft.exchange.webservices.data.property.complex.Attendee,
+    
     	Packages.java.net.URI,
     	Packages.java.util.Date
     );
@@ -39,8 +40,16 @@ comment: Creates an appointment in Calendar
     		appointment.setStart(jstart);
     		appointment.setEnd(jend);
     		appointment.setLocation(Location);
-    		appointment.setReminderDueBy(jend);
-    		appointment.save(SendInvitationsMode.SendToNone);
+    		
+    		if (RequiredAttendees) {
+    			aAttendees = JSON.parse(RequiredAttendees);
+    			for (attendee of aAttendees)
+    				appointment.getRequiredAttendees().add(new Attendee(attendee));	
+    		}
+    		appointment.save(NotifyAttendees == ''true'' ? 
+    			SendInvitationsMode.SendToAllAndSaveCopy :
+    			SendInvitationsMode.SendToNone
+    		);
     		
     	} else {
     		error = "EWS Connector : The EWS Session has not been established . Call The CreateExchangeSession Sequence first"
@@ -57,9 +66,17 @@ comment: Creates an appointment in Calendar
           - ↑mode: JS
           - →→: errror
 ↓Subject [variables.RequestableVariable-1660203771170]: 
+  comment: The Meeting Subject
 ↓Location [variables.RequestableVariable-1660203780187]: 
+  comment: The location (Room, Address etc ..)
 ↓Start [variables.RequestableVariable-1660203787687]: 
+  comment: Start time as ECMA Script epoch
 ↓Duration [variables.RequestableVariable-1660203795849]: 
+  comment: Duration in minutes
+↓RequiredAttendees [variables.RequestableVariable-1660238249238]: 
+  comment: A Stringified JSON array of attendees emails
+↓NotifyAttendees [variables.RequestableVariable-1660238407644]: 
+  comment: true or  false
 ↓testOK [core.TestCase]: 
   ↓Subject [variables.TestCaseVariable-1660204400613]: 
     value: Demo Meeeting

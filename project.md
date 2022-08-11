@@ -68,7 +68,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;Duration
 </td>
 <td>
-
+Duration in minutes
 </td>
 </tr>
 <tr>
@@ -76,7 +76,23 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;Location
 </td>
 <td>
-
+The location (Room, Address etc ..)
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;NotifyAttendees
+</td>
+<td>
+true or  false
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;RequiredAttendees
+</td>
+<td>
+A Stringified JSON array of attendees emails
 </td>
 </tr>
 <tr>
@@ -84,7 +100,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;Start
 </td>
 <td>
-
+Start time as ECMA Script epoch
 </td>
 </tr>
 <tr>
@@ -92,7 +108,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;Subject
 </td>
 <td>
-
+The Meeting Subject
 </td>
 </tr>
 </table>

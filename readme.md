@@ -24,6 +24,7 @@ For more technical informations : [documentation](./project.md)
 
 - [Installation](#installation)
 - [Sequences](#sequences)
+    - [CreateAppointment](#createappointment)
     - [CreateExchangeSession](#createexchangesession)
     - [loginAzureAdWithAccessToken](#loginazureadwithaccesstoken)
     - [SendEmail](#sendemail)
@@ -53,6 +54,36 @@ For more technical informations : [documentation](./project.md)
 
 
 ## Sequences
+
+### CreateAppointment
+
+Creates an appointment in Calendar
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>Duration</td><td>Duration in minutes</td>
+</tr>
+<tr>
+<td>Location</td><td>The location (Room, Address etc ..)</td>
+</tr>
+<tr>
+<td>NotifyAttendees</td><td>true or  false</td>
+</tr>
+<tr>
+<td>RequiredAttendees</td><td>A Stringified JSON array of attendees emails</td>
+</tr>
+<tr>
+<td>Start</td><td>Start time as ECMA Script epoch</td>
+</tr>
+<tr>
+<td>Subject</td><td>The Meeting Subject</td>
+</tr>
+</table>
 
 ### CreateExchangeSession
 
