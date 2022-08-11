@@ -92,6 +92,7 @@ comment: |
 ↓password [variables.RequestableVariable-1659854053150]: 
   comment: The user password for Exchange On Prem installations
 ↓EWSUrl [variables.RequestableVariable-1660194805940]: 
+  comment: The EWS Url. Automatically provided by the Symbol
   value: ${lib_exchange.EWSUrl}
 ↓OK [core.TestCase]: 
   ↓user [variables.TestCaseVariable-1659854067771]: 
