@@ -20,6 +20,7 @@
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓CreateAppointment [sequences.GenericSequence]: 🗏 sequences/CreateAppointment.yaml
   ↓CreateExchangeSession [sequences.GenericSequence]: 🗏 sequences/CreateExchangeSession.yaml
+  ↓ListInbox [sequences.GenericSequence]: 🗏 sequences/ListInbox.yaml
   ↓loginAzureAdWithAccessToken [sequences.GenericSequence]: 🗏 sequences/loginAzureAdWithAccessToken.yaml
   ↓SendEmail [sequences.GenericSequence]: 🗏 sequences/SendEmail.yaml
   ↓lib_OAuth_reference [references.ProjectSchemaReference]: 

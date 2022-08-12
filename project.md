@@ -184,6 +184,44 @@ The user name as an email of a service account with Impersonation privileges for
 
 </p></blockquote></details>
 
+<details><summary><b>ListInbox</b> : Lists 50 first mails in the inbox </summary><blockquote><p>
+
+
+## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") ListInbox
+
+Lists 50 first mails in the inbox 
+
+<span style="color:DarkGoldenRod">Variables</span>
+
+<table>
+<tr>
+<th>
+name
+</th>
+<th>
+comment
+</th>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;CurrentUser
+</td>
+<td>
+The user calendar to take the appointment in as an email address
+</td>
+</tr>
+<tr>
+<td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;pageSize
+</td>
+<td>
+The max number of mails to be returned
+</td>
+</tr>
+</table>
+
+</p></blockquote></details>
+
 <details><summary><b>loginAzureAdWithAccessToken</b> : Perform the OAuth flow for AzureAD If the token is valid, it will be stored as a special EWS OAuth token in the user's session to be used when calling EWS APIs</summary><blockquote><p>
 
 

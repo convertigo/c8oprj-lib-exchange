@@ -1,0 +1,122 @@
+comment: Lists 50 first mails in the inbox 
+↓EWSReadInbox [steps.SimpleStep-1660308236581]: 
+  expression: |
+    'var EWSApi = JavaImporter(
+    	Packages.microsoft.exchange.webservices.data.core.ExchangeService,
+    	Packages.microsoft.exchange.webservices.data.credential.WebCredentials,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ExchangeVersion,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.misc.ConnectingIdType,
+    	Packages.microsoft.exchange.webservices.data.core.service.item.EmailMessage,
+    	Packages.microsoft.exchange.webservices.data.property.complex.MessageBody,
+    	Packages.microsoft.exchange.webservices.data.misc.ImpersonatedUserId,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.service.SendInvitationsMode,
+    	Packages.microsoft.exchange.webservices.data.core.service.item.Appointment,
+    	Packages.microsoft.exchange.webservices.data.property.complex.Attendee,
+    	Packages.microsoft.exchange.webservices.data.search.FindItemsResults,
+    	Packages.microsoft.exchange.webservices.data.search.ItemView,
+    	Packages.microsoft.exchange.webservices.data.core.PropertySet,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.property.BasePropertySet,
+    	Packages.microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName,
+    
+    	Packages.java.net.URI,
+    );
+    
+    TraceListener = {
+    	trace: function(topic, data) {
+    		log.warn(topic + ":" + data)
+    	}
+    }
+    
+    function getJsArray(javaList) {
+    	let jsArray  = [];
+    	let javaArray =javaList.getItems().toArray()
+    	for	(let i=0; i < javaArray.length; i++) {
+    		jsArray.push(javaArray[i]);
+    	}
+    	return jsArray;
+    }
+    
+    with (EWSApi) {
+    	error = null;
+    	service = context.httpSession.getAttribute("EWSSession");
+    	log.debug("EWS Service = " + service);
+    	
+    	if (service != null) { 
+    		service.setTraceEnabled(true);
+    		service.setTraceListener(TraceListener);
+    		if (CurrentUser) {
+    			aMessages = [];
+    			service.setImpersonatedUserId(new ImpersonatedUserId(ConnectingIdType.SmtpAddress, CurrentUser));
+    			propertySet = new PropertySet(BasePropertySet.FirstClassProperties);
+    		    itemView = new ItemView(pageSize);
+    		    itemView.setPropertySet(propertySet);
+    		    searchResults = null;
+    		    try {
+    		        do {                    
+    		            searchResults = service.findItems(WellKnownFolderName.Inbox, itemView);
+    		            array = searchResults.getItems().toArray();
+    		            for (i=0; i < array.length; i++) {
+    						// Optionally we can load the message to get additional properties but this is not
+    						// recommended as it wil cause an API call for each message.
+    						// array[i].load();
+    						
+       						aMessages.push({
+    							Id: array[i].getId(),
+    							Subject : array[i].getSubject(),
+    							From: array[i].getFrom(),
+    							
+    							// The following properties will only be available when .load() method is called on message
+    							// To: getJsArray(array[i].getToRecipients()),
+    							// Cc: getJsArray(array[i].getCcRecipients()),
+    							// Bcc: getJsArray(array[i].getBccRecipients()),
+    							// Body: array[i].getBody(),
+    							
+    							DateReceived: new Date(array[i].getDateTimeReceived().getTime()).toISOString()
+    						});
+    					} 
+    		        } while (searchResults.isMoreAvailable());
+    		    }
+    		    catch (e)  {
+    				log.error("!!! ListMail Exception" + e);
+    				error = ""+e                
+    		    }
+    		} else {
+    			error = "Current User is not defined and is mandatory"	
+    		}		
+    	} else {
+    		error = "EWS Connector : The EWS Session has not been established . Call The CreateExchangeSession Sequence first"
+    	}
+    }	
+    '
+↓jIfThenElse [steps.IfThenElseStep-1660322259289]: 
+  condition: error != null
+  ↓jThen [steps.ThenStep-1660322259291]: 
+    ↓Error_structure [steps.XMLErrorStep-1660308236587]: 
+      message: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: JS
+            - →→: error
+  ↓jElse [steps.ElseStep-1660322259293]: 
+    ↓JSON_to_XML [steps.JsonToXmlStep-1660321656717]: 
+      jsonObject: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: JS
+            - →→: aMessages
+      key: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: PLAIN
+            - →→: mails
+↓CurrentUser [variables.RequestableVariable-1660309609333]: 
+  comment: The user calendar to take the appointment in as an email address
+↓pageSize [variables.RequestableVariable-1660324179814]: 
+  comment: The max number of mails to be returned
+  value: 50
+↓TestOK [core.TestCase]: 
+  ↓CurrentUser [variables.TestCaseVariable-1660309711826]: 
+    value: administrateur@exchange.convertigo.com
