@@ -106,5 +106,3 @@ comment: |
     https://&lt;exchange server dns name&gt;/EWS/exchange.asmx
     
   value: ${lib_exchange.EWSUrl}
-↓CurrentUser [variables.RequestableVariable-1660286613856]: 
-  comment: The User establishing the session as an email address. All operations will be done on behalf this user

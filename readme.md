@@ -66,6 +66,12 @@ Creates an appointment in Calendar
 <th>name</th><th>comment</th>
 </tr>
 <tr>
+<td>Body</td><td>The description of the meeting</td>
+</tr>
+<tr>
+<td>CurrentUser</td><td>The user calendar to take the appointment in as an email address</td>
+</tr>
+<tr>
 <td>Duration</td><td>Duration in minutes</td>
 </tr>
 <tr>
@@ -97,9 +103,6 @@ This sequence has to be called prior to any other sequences
 <table>
 <tr>
 <th>name</th><th>comment</th>
-</tr>
-<tr>
-<td>CurrentUser</td><td>The User establishing the session as an email address. All operations will be done on behalf this user</td>
 </tr>
 <tr>
 <td>EWSUrl</td><td>The EWS API Url. Optional as automatically provided by the Symbol. EWS API Urls are in the form:

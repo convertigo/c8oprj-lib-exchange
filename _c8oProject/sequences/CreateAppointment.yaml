@@ -31,26 +31,31 @@ comment: Creates an appointment in Calendar
     	if (service != null) { 
     		service.setTraceEnabled(true);
     		service.setTraceListener(TraceListener);
-    		
-    		jstart = new Date(Start * 1);
-    		jend = new Date(jstart.getTime() + Duration * 60);
-    		
-    		appointment = new Appointment(service);
-    		appointment.setBody(MessageBody.getMessageBodyFromText(Subject));
-    		appointment.setStart(jstart);
-    		appointment.setEnd(jend);
-    		appointment.setLocation(Location);
-    		
-    		if (RequiredAttendees) {
-    			aAttendees = JSON.parse(RequiredAttendees);
-    			for (attendee of aAttendees)
-    				appointment.getRequiredAttendees().add(new Attendee(attendee));	
-    		}
-    		appointment.save(NotifyAttendees == ''true'' ? 
-    			SendInvitationsMode.SendToAllAndSaveCopy :
-    			SendInvitationsMode.SendToNone
-    		);
-    		
+    		if (CurrentUser) {
+    			service.setImpersonatedUserId(new ImpersonatedUserId(ConnectingIdType.SmtpAddress, CurrentUser));
+    			
+    			jstart = new Date(Start * 1);
+    			jend = new Date(jstart.getTime() + Duration * 60);
+    			
+    			appointment = new Appointment(service);
+    			appointment.setSubject(Subject);
+    			appointment.setBody(MessageBody.getMessageBodyFromText(Body));
+    			appointment.setStart(jstart);
+    			appointment.setEnd(jend);
+    			appointment.setLocation(Location);
+    			
+    			if (RequiredAttendees) {
+    				aAttendees = JSON.parse(RequiredAttendees);
+    				for (attendee of aAttendees)
+    					appointment.getRequiredAttendees().add(new Attendee(attendee));	
+    			}
+    			appointment.save(NotifyAttendees == ''true'' ? 
+    				SendInvitationsMode.SendToAllAndSaveCopy :
+    				SendInvitationsMode.SendToNone
+    			);
+    		} else {
+    			error = "Current User is not defined and is mandatory"	
+    		}		
     	} else {
     		error = "EWS Connector : The EWS Session has not been established . Call The CreateExchangeSession Sequence first"
     	}
@@ -64,9 +69,13 @@ comment: Creates an appointment in Calendar
         - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
         - SmartType: 
           - ↑mode: JS
-          - →→: errror
+          - →→: error
+↓CurrentUser [variables.RequestableVariable-1660287812163]: 
+  comment: The user calendar to take the appointment in as an email address
 ↓Subject [variables.RequestableVariable-1660203771170]: 
   comment: The Meeting Subject
+↓Body [variables.RequestableVariable-1660287793382]: 
+  comment: The description of the meeting
 ↓Location [variables.RequestableVariable-1660203780187]: 
   comment: The location (Room, Address etc ..)
 ↓Start [variables.RequestableVariable-1660203787687]: 
@@ -84,6 +93,14 @@ comment: Creates an appointment in Calendar
     value: Convertigo Office
   ↓Start [variables.TestCaseVariable-1660204400617]: 
     description: 60
-    value: 1660239741928
+    value: 1660288548947
   ↓Duration [variables.TestCaseVariable-1660204400619]: 
     value: 60
+  ↓RequiredAttendees [variables.TestCaseVariable-1660287890733]: 
+    value: '["mathieuf@exchange.convertigo.com","opic@exchange.convertigo.com"]'
+  ↓NotifyAttendees [variables.TestCaseVariable-1660287890735]: 
+    value: true
+  ↓Body [variables.TestCaseVariable-1660287890737]: 
+    value: This is a demo meeting created by the Convertigo Exchange Connector
+  ↓CurrentUser [variables.TestCaseVariable-1660289002461]: 
+    value: charlesg@exchange.convertigo.com
