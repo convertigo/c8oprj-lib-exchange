@@ -151,7 +151,7 @@ The User establishing the session as an email address. All operations will be do
 <td>
 The EWS API Url. Optional as automatically provided by the Symbol. EWS API Urls are in the form:
 
-https://<exchange server dns name>/EWS/exchange.asmx
+https://&lt;exchange server dns name&gt;/EWS/exchange.asmx
 
 </td>
 </tr>
