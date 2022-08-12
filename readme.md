@@ -26,6 +26,7 @@ For more technical informations : [documentation](./project.md)
 - [Sequences](#sequences)
     - [CreateAppointment](#createappointment)
     - [CreateExchangeSession](#createexchangesession)
+    - [ListInbox](#listinbox)
     - [loginAzureAdWithAccessToken](#loginazureadwithaccesstoken)
     - [SendEmail](#sendemail)
 - [Mobile Library](#mobile-library)
@@ -116,6 +117,24 @@ https://&lt;exchange server dns name&gt;/EWS/exchange.asmx
 </tr>
 <tr>
 <td>user</td><td>The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Optional as automatically provided by the symbol but can be overrided</td>
+</tr>
+</table>
+
+### ListInbox
+
+Lists 50 first mails in the inbox 
+
+**variables**
+
+<table>
+<tr>
+<th>name</th><th>comment</th>
+</tr>
+<tr>
+<td>CurrentUser</td><td>The user calendar to take the appointment in as an email address</td>
+</tr>
+<tr>
+<td>pageSize</td><td>The max number of mails to be returned</td>
 </tr>
 </table>
 
