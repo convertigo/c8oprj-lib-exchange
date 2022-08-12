@@ -113,7 +113,7 @@ comment: Lists 50 first mails in the inbox
             - ↑mode: PLAIN
             - →→: mails
 ↓CurrentUser [variables.RequestableVariable-1660309609333]: 
-  comment: The user calendar to take the appointment in as an email address
+  comment: The user inbox to list as an email address
 ↓pageSize [variables.RequestableVariable-1660324179814]: 
   comment: The max number of mails to be returned
   value: 50

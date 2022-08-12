@@ -207,7 +207,7 @@ comment
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;CurrentUser
 </td>
 <td>
-The user calendar to take the appointment in as an email address
+The user inbox to list as an email address
 </td>
 </tr>
 <tr>

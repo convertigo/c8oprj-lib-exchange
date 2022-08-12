@@ -131,7 +131,7 @@ Lists 50 first mails in the inbox
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>CurrentUser</td><td>The user calendar to take the appointment in as an email address</td>
+<td>CurrentUser</td><td>The user inbox to list as an email address</td>
 </tr>
 <tr>
 <td>pageSize</td><td>The max number of mails to be returned</td>
