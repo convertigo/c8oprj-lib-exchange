@@ -88,11 +88,11 @@ comment: |
           - ↑mode: JS
           - →→: error
 ↓user [variables.RequestableVariable-1659854045975]: 
-  comment: The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Automatically provided by the symbol but can be overrided
+  comment: The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Optional as automatically provided by the symbol but can be overrided
   value: ${lib_exchange.ServiceAccount}
 ↓password [variables.RequestableVariable-1659854053150]: 
   comment: |
-    The user password for Exchange On Prem installations. Automatically provided by the symbol but can be overrided
+    The user password for Exchange On Prem installations. Optional as automatically provided by the symbol but can be overrided
     
   value: 
     - ↑ciphered: true
@@ -100,5 +100,11 @@ comment: |
     - →→: xdef9fd9ad3175a305d471f48abb2dd7799140de5ba4fd55664d59fd8d32378becaf576b9c980e9098cda18f212779e84
   visibility: '-1'
 ↓EWSUrl [variables.RequestableVariable-1660194805940]: 
-  comment: The EWS Url. Automatically provided by the Symbol
+  comment: |
+    The EWS API Url. Optional as automatically provided by the Symbol. EWS API Urls are in the form:
+    
+    https://<exchange server dns name>/EWS/exchange.asmx
+    
   value: ${lib_exchange.EWSUrl}
+↓CurrentUser [variables.RequestableVariable-1660286613856]: 
+  comment: The User establishing the session as an email address. All operations will be done on behalf this user

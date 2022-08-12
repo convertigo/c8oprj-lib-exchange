@@ -99,14 +99,20 @@ This sequence has to be called prior to any other sequences
 <th>name</th><th>comment</th>
 </tr>
 <tr>
-<td>EWSUrl</td><td>The EWS Url. Automatically provided by the Symbol</td>
+<td>CurrentUser</td><td>The User establishing the session as an email address. All operations will be done on behalf this user</td>
 </tr>
 <tr>
-<td>password</td><td>The user password for Exchange On Prem installations. Automatically provided by the symbol but can be overrided
+<td>EWSUrl</td><td>The EWS API Url. Optional as automatically provided by the Symbol. EWS API Urls are in the form:
+
+https://<exchange server dns name>/EWS/exchange.asmx
 </td>
 </tr>
 <tr>
-<td>user</td><td>The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Automatically provided by the symbol but can be overrided</td>
+<td>password</td><td>The user password for Exchange On Prem installations. Optional as automatically provided by the symbol but can be overrided
+</td>
+</tr>
+<tr>
+<td>user</td><td>The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Optional as automatically provided by the symbol but can be overrided</td>
 </tr>
 </table>
 

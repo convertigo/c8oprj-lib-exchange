@@ -138,10 +138,21 @@ comment
 </tr>
 <tr>
 <td>
+<img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;CurrentUser
+</td>
+<td>
+The User establishing the session as an email address. All operations will be done on behalf this user
+</td>
+</tr>
+<tr>
+<td>
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;EWSUrl
 </td>
 <td>
-The EWS Url. Automatically provided by the Symbol
+The EWS API Url. Optional as automatically provided by the Symbol. EWS API Urls are in the form:
+
+https://<exchange server dns name>/EWS/exchange.asmx
+
 </td>
 </tr>
 <tr>
@@ -149,7 +160,7 @@ The EWS Url. Automatically provided by the Symbol
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;password
 </td>
 <td>
-The user password for Exchange On Prem installations. Automatically provided by the symbol but can be overrided
+The user password for Exchange On Prem installations. Optional as automatically provided by the symbol but can be overrided
 
 </td>
 </tr>
@@ -158,7 +169,7 @@ The user password for Exchange On Prem installations. Automatically provided by 
 <img src="https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/variables/images/variable_color_16x16.png?raw=true "  alt="RequestableVariable" >&nbsp;user
 </td>
 <td>
-The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Automatically provided by the symbol but can be overrided
+The user name as an email of a service account with Impersonation privileges for Exchange On prem installations. Optional as automatically provided by the symbol but can be overrided
 </td>
 </tr>
 </table>
