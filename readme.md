@@ -175,7 +175,7 @@ Returns a Given email details form its Id returned by ListInbox
 
 ### SendEmail
 
-Sends an email usinf EWS services.
+Sends an email using EWS services.
 
 **variables**
 

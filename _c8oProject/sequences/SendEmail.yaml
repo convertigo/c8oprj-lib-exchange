@@ -1,4 +1,4 @@
-comment: Sends an email usinf EWS services.
+comment: Sends an email using EWS services.
 ↓EWSSendMail [steps.SimpleStep-1660031407628]: 
   expression: |
     'var EWSApi = JavaImporter(

@@ -291,12 +291,12 @@ The mail Id as returned by ListInbox
 
 </p></blockquote></details>
 
-<details><summary><b>SendEmail</b> : Sends an email usinf EWS services</summary><blockquote><p>
+<details><summary><b>SendEmail</b> : Sends an email using EWS services</summary><blockquote><p>
 
 
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/sequences/images/genericsequence_color_16x16.png?raw=true "GenericSequence") SendEmail
 
-Sends an email usinf EWS services.
+Sends an email using EWS services.
 
 <span style="color:DarkGoldenRod">Variables</span>
 
