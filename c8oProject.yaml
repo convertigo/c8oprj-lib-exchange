@@ -16,7 +16,7 @@
     | lib_exchange.ServiceAccountPassword.secret  | The password for this service account |
     
     '
-  version: 1.0.1
+  version: 1.0.2
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓CreateAppointment [sequences.GenericSequence]: 🗏 sequences/CreateAppointment.yaml
   ↓CreateExchangeSession [sequences.GenericSequence]: 🗏 sequences/CreateExchangeSession.yaml
