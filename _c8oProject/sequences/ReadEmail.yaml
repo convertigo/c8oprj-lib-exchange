@@ -1,5 +1,5 @@
-comment: Lists 50 first mails in the inbox 
-↓EWSReadInbox [steps.SimpleStep-1660308236581]: 
+comment: Returns a Given email details form its Id returned by ListInbox
+↓EWSReadEmail [steps.SimpleStep-1660367005690]: 
   expression: |
     'var EWSApi = JavaImporter(
     	Packages.microsoft.exchange.webservices.data.core.ExchangeService,
@@ -17,6 +17,7 @@ comment: Lists 50 first mails in the inbox
     	Packages.microsoft.exchange.webservices.data.core.PropertySet,
     	Packages.microsoft.exchange.webservices.data.core.enumeration.property.BasePropertySet,
     	Packages.microsoft.exchange.webservices.data.core.enumeration.property.WellKnownFolderName,
+    	Packages.microsoft.exchange.webservices.data.property.complex.ItemId,
     
     	Packages.java.net.URI,
     );
@@ -45,38 +46,23 @@ comment: Lists 50 first mails in the inbox
     		service.setTraceEnabled(true);
     		service.setTraceListener(TraceListener);
     		if (CurrentUser) {
-    			aMessages = [];
     			service.setImpersonatedUserId(new ImpersonatedUserId(ConnectingIdType.SmtpAddress, CurrentUser));
     			propertySet = new PropertySet(BasePropertySet.FirstClassProperties);
-    		    itemView = new ItemView(pageSize);
-    		    itemView.setPropertySet(propertySet);
-    		    searchResults = null;
     		    try {
-    		        do {                    
-    		            searchResults = service.findItems(WellKnownFolderName.Inbox, itemView);
-    		            array = searchResults.getItems().toArray();
-    		            for (i=0; i < array.length; i++) {
-    						// Optionally we can load the message to get additional properties but this is not
-    						// recommended as it wil cause an API call for each message.
-    						// array[i].load();
-    						
-       						aMessages.push({
-    							Id: array[i].getId(),
-    							Subject : array[i].getSubject(),
-    							From: array[i].getFrom(),
-    							
-    							// The following properties will only be available when .load() method is called on message
-    							// To: getJsArray(array[i].getToRecipients()),
-    							// Cc: getJsArray(array[i].getCcRecipients()),
-    							// Bcc: getJsArray(array[i].getBccRecipients()),
-    							// Body: array[i].getBody(),
-    							
-    							DateReceived: new Date(array[i].getDateTimeReceived().getTime()).toISOString()
-    						});
-    					} 
-    		        } while (searchResults.isMoreAvailable());
-    		    }
+    		            emailMsg = EmailMessage.bind(service, new ItemId(Id), propertySet);
+       					msg = {
+    						Id: emailMsg.getId(),
+    						Subject : emailMsg.getSubject(),
+    						From: emailMsg.getFrom(),
+    						To: getJsArray(emailMsg.getToRecipients()),
+    						Cc: getJsArray(emailMsg.getCcRecipients()),
+    						Bcc: getJsArray(emailMsg.getBccRecipients()),
+    						DateReceived: new Date(emailMsg.getDateTimeReceived().getTime()).toISOString(),
+    						Body: emailMsg.getBody()
+    					};
+    			} 
     		    catch (e)  {
+    				log.error(e);
     				error = ""+e                
     		    }
     		} else {
@@ -87,35 +73,36 @@ comment: Lists 50 first mails in the inbox
     	}
     }	
     '
-↓jIfThenElse [steps.IfThenElseStep-1660322259289]: 
+↓jIfThenElse [steps.IfThenElseStep-1660367005693]: 
   condition: error != null
-  ↓jThen [steps.ThenStep-1660322259291]: 
-    ↓Error_structure [steps.XMLErrorStep-1660308236587]: 
+  ↓jThen [steps.ThenStep-1660367005696]: 
+    ↓Error_structure [steps.XMLErrorStep-1660367005699]: 
       message: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
           - SmartType: 
             - ↑mode: JS
             - →→: error
-  ↓jElse [steps.ElseStep-1660322259293]: 
-    ↓JSON_to_XML [steps.JsonToXmlStep-1660321656717]: 
+  ↓jElse [steps.ElseStep-1660367005702]: 
+    ↓JSON_to_XML [steps.JsonToXmlStep-1660367005705]: 
       jsonObject: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
           - SmartType: 
             - ↑mode: JS
-            - →→: aMessages
+            - →→: msg
       key: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
           - SmartType: 
             - ↑mode: PLAIN
-            - →→: mails
-↓CurrentUser [variables.RequestableVariable-1660309609333]: 
-  comment: The user inbox to list as an email address
-↓pageSize [variables.RequestableVariable-1660324179814]: 
-  comment: The max number of mails to be returned
-  value: 50
+            - →→: mail
+↓CurrentUser [variables.RequestableVariable-1660367005708]: 
+  comment: The user inbox as an email address
+↓Id [variables.RequestableVariable-1660367005711]: 
+  comment: The mail Id as returned by ListInbox
 ↓TestOK [core.TestCase]: 
-  ↓CurrentUser [variables.TestCaseVariable-1660309711826]: 
+  ↓CurrentUser [variables.TestCaseVariable-1660367005715]: 
     value: administrateur@exchange.convertigo.com
+  ↓Id [variables.TestCaseVariable-1660369215849]: 
+    value: AAMkADAxYjMxYTk3LWE5NGQtNDA3Ni1iYTNiLWExODg0YzkzMTIzZABGAAAAAADbRduwOdBhQ4LxmhC8Ph96BwAdA6j3k3FeSLMAZsa0fhN/AAAAAAEMAAAdA6j3k3FeSLMAZsa0fhN/AAABLGtmAAA=
