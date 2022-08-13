@@ -39,7 +39,7 @@ jobs:
       env:
           cache-name: cache-node-modules
       with:
-          path: ${{ github.workspace }}/_private/ionic/node_modules
+          path: ${{ github.workspace }}/_private/ionic
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
