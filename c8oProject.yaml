@@ -25,7 +25,7 @@
   ↓ReadEmail [sequences.GenericSequence]: 🗏 sequences/ReadEmail.yaml
   ↓SendEmail [sequences.GenericSequence]: 🗏 sequences/SendEmail.yaml
   ↓lib_OAuth_reference [references.ProjectSchemaReference]: 
-    projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=334a638363d83d83bfed756b025f96226751e50e
+    projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=1.0.2
   ↓Project_reference [references.ProjectSchemaReference]: 
     projectName: mobilebuilder_tpl_8_0_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_0_0_ngx.zip
   ↓Application [core.MobileApplication]: 
