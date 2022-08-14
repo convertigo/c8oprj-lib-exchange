@@ -33,15 +33,6 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
-    - name: Cache Node Modules
-      id: cache-npm
-      uses: actions/cache@v3
-      env:
-          cache-name: cache-node-modules
-      with:
-          path: ${{ github.workspace }}/_private/ionic
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('_private/ionic/package-lock.json') }}
-
     - name: Setup Gradle Dependencies Cache
       uses: actions/cache@v2
       with:
@@ -53,17 +44,31 @@ jobs:
       with:
           path: ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+          
+    - name: Run Convertigo build 1st Part
+      env:
+        C8O_SERVER: ${{ secrets.C8O_SERVER }}
+      run: |
+        echo "Generate Mobile Builder App" && \
+        sh gradlew --no-daemon --stacktrace --info generateMobileBuilder \
+          -Pconvertigo.load.mobileApplicationEndpoint=$C8O_SERVER
 
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
+    - name: Cache Node Modules
+      id: cache-npm
+      uses: actions/cache@v3
+      env:
+          cache-name: cache-node-modules
+      with:
+          path: ${{ github.workspace }}/_private/ionic
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('_private/ionic/package-lock.json') }}
 
-    - name: Run Convertigo build
+    - name: Run Convertigo build 2nd Part
       env:
         C8O_SERVER: ${{ secrets.C8O_SERVER }}
         C8O_USER: ${{ secrets.C8O_USER }}
         C8O_PASSWORD: ${{ secrets.C8O_PASSWORD }}
       run: |
-        echo "Build the Mobile Application and deploy to $C8O_SERVER" && \
+        echo "Build the Application and deploy to $C8O_SERVER" && \
         sh gradlew --no-daemon --stacktrace --info car \
           -Pconvertigo.deploy.server=$C8O_SERVER \
           -Pconvertigo.deploy.user=$C8O_USER \
