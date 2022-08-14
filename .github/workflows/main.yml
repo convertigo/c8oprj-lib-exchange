@@ -44,11 +44,7 @@ jobs:
       with:
           path: ${{ github.workspace }}/_private/ionic
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-            
+
     - name: Setup Gradle Dependencies Cache
       uses: actions/cache@v2
       with:
