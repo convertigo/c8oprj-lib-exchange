@@ -53,9 +53,6 @@ jobs:
         sh gradlew --no-daemon --stacktrace --info generateMobileBuilder \
           -Pconvertigo.load.mobileApplicationEndpoint=$C8O_SERVER
 
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
- 
     - name: Cache Node Modules
       id: cache-npm
       uses: actions/cache@v3
@@ -79,3 +76,7 @@ jobs:
           -Pconvertigo.deploy.user=$C8O_USER \
           -Pconvertigo.deploy.password=$C8O_PASSWORD \
           -Pconvertigo.load.mobileApplicationEndpoint=$C8O_SERVER
+
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
+          
