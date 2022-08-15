@@ -64,6 +64,9 @@ jobs:
             ${{ github.workspace }}/_private/ionic/.angular
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
 
+    - name: Setup upterm session
+      uses: lhotari/action-upterm@v1
+
     - name: Run Convertigo build 2nd Part
       env:
         C8O_SERVER: ${{ secrets.C8O_SERVER }}
@@ -77,4 +80,5 @@ jobs:
           -Pconvertigo.deploy.password=$C8O_PASSWORD \
           -Pconvertigo.load.mobileApplicationEndpoint=$C8O_SERVER
 
+          
           
