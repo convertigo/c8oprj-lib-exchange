@@ -23,7 +23,7 @@ For On Prem Installations, you can use directly the  CreateExchangeSession Seque
 ## ![](https://github.com/convertigo/convertigo/blob/develop/engine/src/com/twinsoft/convertigo/beans/references/images/ProjectSchemaReference_16x16.png?raw=true "ProjectSchemaReference") lib_OAuth
 
 
-see [readme](https://github.com/convertigo/c8oprj-lib-oauth/tree/334a638363d83d83bfed756b025f96226751e50e#readme)
+see [readme](https://github.com/convertigo/c8oprj-lib-oauth/tree/5c936b56270e918494d25e38ec358d8e645c802c#readme)
 </p></blockquote></details>
 
 <details><summary><span style="color:DarkGoldenRod"><i>Connectors</i></span></summary><blockquote><p>
