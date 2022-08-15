@@ -77,6 +77,4 @@ jobs:
           -Pconvertigo.deploy.password=$C8O_PASSWORD \
           -Pconvertigo.load.mobileApplicationEndpoint=$C8O_SERVER
 
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
           
