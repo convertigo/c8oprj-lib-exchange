@@ -50,7 +50,7 @@ jobs:
         C8O_SERVER: ${{ secrets.C8O_SERVER }}
       run: |
         echo "Generate Mobile Builder App" && \
-        sh gradlew --no-daemon --stacktrace --info generateMobileBuilder \
+        sh gradlew  --stacktrace --info generateMobileBuilder \
           -Pconvertigo.load.mobileApplicationEndpoint=$C8O_SERVER
 
     - name: Cache Node Modules
@@ -71,7 +71,7 @@ jobs:
         C8O_PASSWORD: ${{ secrets.C8O_PASSWORD }}
       run: |
         echo "Build the Application and deploy to $C8O_SERVER" && \
-        sh gradlew --no-daemon --stacktrace --info car \
+        sh gradlew --stacktrace --info car \
           -Pconvertigo.deploy.server=$C8O_SERVER \
           -Pconvertigo.deploy.user=$C8O_USER \
           -Pconvertigo.deploy.password=$C8O_PASSWORD \
