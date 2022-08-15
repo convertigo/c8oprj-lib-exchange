@@ -27,7 +27,7 @@
   ↓lib_OAuth_reference [references.ProjectSchemaReference]: 
     projectName: lib_OAuth=https://github.com/convertigo/c8oprj-lib-oauth.git:branch=1.0.2
   ↓Project_reference [references.ProjectSchemaReference]: 
-    projectName: mobilebuilder_tpl_8_0_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_0_0_ngx.zip
+    projectName: mobilebuilder_tpl_8_0_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_0_1_ngx.zip
   ↓Application [core.MobileApplication]: 
     comment: This is a test app to perform OAuth and use the EWS Connector
     ↓NgxApp [ngx.components.ApplicationComponent]: 🗏 mobileNgxApp.yaml
