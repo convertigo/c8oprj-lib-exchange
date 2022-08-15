@@ -65,7 +65,7 @@ jobs:
           path: |
             ${{ github.workspace }}/_private/ionic/node_modules
             ${{ github.workspace }}/_private/ionic/.angular
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
 
     - name: Run Convertigo build 2nd Part
       env:
