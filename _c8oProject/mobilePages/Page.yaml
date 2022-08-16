@@ -11,7 +11,7 @@ title: Title for Page
       textValue: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-          - MobileSmartSourceType: plain:Heading 1
+          - MobileSmartSourceType: plain:Exchange Connector Test App
   ↓Button [ngx.components.UIDynamicElement-1659949895589]: 
     beanData: '{"ionBean":"Button"}'
     tagName: ion-button
