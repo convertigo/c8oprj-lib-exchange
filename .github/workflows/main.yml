@@ -60,7 +60,7 @@ jobs:
             ${{ github.workspace }}/_private/ionic/node_modules
             ${{ github.workspace }}/_private/ionic/.angular
             /home/runner/convertigo/nodes
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json', **/_private/ionic/version.json) }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json', '**/_private/ionic/version.json') }}
 
     - name: Run Convertigo build 2nd Part
       env:
