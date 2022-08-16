@@ -59,7 +59,7 @@ jobs:
           path: |
             ${{ github.workspace }}/_private/ionic/node_modules
             ${{ github.workspace }}/_private/ionic/.angular
-            ~/runner/convertigo/nodes
+            /home/runner/convertigo/nodes
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
 
     - name: Run Convertigo build 2nd Part
